@@ -78,6 +78,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Shout out to Sagun Shrestha and his article [Web Scraping Project Ideas](https://medium.com/etllab/web-scraping-project-ideas-50de5d21947) for giving me ideas for the scraper project
