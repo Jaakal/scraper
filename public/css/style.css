@@ -59,6 +59,14 @@ header {
   height: 30px;
   border: 2px solid #00bdd7;
   border-radius: 15px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation-name: rotate-clockwise;
+          animation-name: rotate-clockwise;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .search form::before {
@@ -74,10 +82,10 @@ header {
   -webkit-transform-origin: center left;
           transform-origin: center left;
   will-change: width, opacity;
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transition: opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
+  transition: opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
+  transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s;
+  transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
 }
 
 .search-input-wrapper {
@@ -90,24 +98,80 @@ header {
   position: relative;
   height: 52px;
   width: 748px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.search-input-wrapper.active form {
+  -webkit-box-shadow: 0 0 3px #2A93D5;
+          box-shadow: 0 0 3px #2A93D5;
+  -webkit-transition: -webkit-box-shadow 0.3s ease 0.3s;
+  transition: -webkit-box-shadow 0.3s ease 0.3s;
+  transition: box-shadow 0.3s ease 0.3s;
+  transition: box-shadow 0.3s ease 0.3s, -webkit-box-shadow 0.3s ease 0.3s;
 }
 
 .search-input-wrapper.active form::before {
+  opacity: 0;
   -webkit-transform: rotate(45deg) scaleX(0);
           transform: rotate(45deg) scaleX(0);
-  opacity: 0;
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .search-input-wrapper.active .search-input {
-  padding-left: 10px;
+  padding: 0 28px 0 10px;
+  -webkit-transition: padding 0s linear 0.6s;
+  transition: padding 0s linear 0.6s;
 }
 
 .search-input-wrapper.active .space-filler-1 {
   width: 0;
+  -webkit-transition: width 0.3s ease 0.2s;
+  transition: width 0.3s ease 0.2s;
 }
 
 .search-input-wrapper.active .space-filler-2 {
   width: 195px;
+  -webkit-transition: width 0.3s ease 0.2s;
+  transition: width 0.3s ease 0.2s;
+}
+
+.search-input-wrapper.active .submit-button {
+  opacity: 1;
+  -webkit-transform: translate(-10px, -2px);
+          transform: translate(-10px, -2px);
+  -webkit-transition: opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
+  transition: opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
+  transition: transform ease 0.5s, opacity 0.3s ease 0.6s;
+  transition: transform ease 0.5s, opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
+}
+
+.search-input-wrapper.active .submit-button:hover {
+  cursor: pointer;
+}
+
+.form-inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+  border-radius: 13px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation-name: rotate-anticlockwise;
+          animation-name: rotate-anticlockwise;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  background-color: transparent;
 }
 
 .space-filler-1,
@@ -135,25 +199,114 @@ header {
   line-height: 16px;
   border: none;
   border-radius: 13px;
+  color: #2A93D5;
+  will-change: padding;
+  background: transparent;
 }
 
 .search-input:focus {
-  background-color: #ffffff !important;
   outline: none;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: inherit;
-  -webkit-transition: background-color 5000s ease-in-out 0s;
-  transition: background-color 5000s ease-in-out 0s;
+.submit-button {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  padding: 0;
+  border-radius: 6px;
+  border-color: red;
+  right: 0;
+  opacity: 0;
+  -webkit-transform: translateX(50px);
+          transform: translateX(50px);
+  background-color: inherit;
+}
+
+.submit-button span {
+  position: absolute;
+  width: 8px;
+  border-top: 1px solid red;
+  -webkit-transform: translate(2px, 6px) rotate(45deg);
+          transform: translate(2px, 6px) rotate(45deg);
+}
+
+.submit-button:hover {
+  -webkit-box-shadow: 0 0 2px red, 0 0 1px red inset;
+          box-shadow: 0 0 2px red, 0 0 1px red inset;
+}
+
+.submit-button:hover span {
+  -webkit-box-shadow: 0 0 2px red;
+          box-shadow: 0 0 2px red;
+}
+
+.submit-button:active, .submit-button:focus {
+  outline: none;
+}
+
+.search-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-results .book {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+@-webkit-keyframes rotate-clockwise {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotate-clockwise {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes rotate-anticlockwise {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
+}
+
+@keyframes rotate-anticlockwise {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */

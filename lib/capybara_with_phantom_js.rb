@@ -32,28 +32,13 @@ module CapybaraWithPhantomJs
   def visit(book_name)
     input = @session.fill_in('searchTerm', with: book_name)
     input.send_keys :enter
-    loading_string = 'loading..'
  
-    until @session.html.include?('search-page')
-      loading_string = loader(loading_string)
-    end
-
-    until @session.html.include?("class=\"lazy loaded\"")
-      loading_string = loader(loading_string)
-    end
+    sleep 0.1 until @session.html.include?('search-page')
+    sleep 0.1 until @session.html.include?("class=\"lazy loaded\"")
   end
 
   # Returns the current session's page
   def html
     @session.html
-  end
-
-  private
-
-  def loader(loading_string)
-    system('clear') || system('cls')
-    puts loading_string
-    sleep 0.1
-    loading_string + '.'
   end
 end
