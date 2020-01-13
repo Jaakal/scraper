@@ -4,7 +4,7 @@
 require 'nokogiri'
 require 'sinatra'
 require 'sinatra/async'
-require_relative '../lib/capybara_with_phantom_js'
+require_relative 'capybara_with_phantom_js'
 
 set :server, 'thin'
 

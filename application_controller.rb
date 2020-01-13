@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'bin/main.rb'
+require_relative 'models/book_depository_scraper.rb'
 
 class AsyncTest < Sinatra::Base
   register Sinatra::Async
