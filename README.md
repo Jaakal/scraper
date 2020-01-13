@@ -2,6 +2,10 @@
 
 This is a scraper for books from [Book Depository](https://www.bookdepository.com/) in order to get the results which are currently available and on the next stage would like to add a price following functionality - if desired price range is met, a notice is sent through email.
 
+## Screenshot
+
+![Screenshot of the webpage](https://github.com/Jaakal/scraper/blob/layout/screenshot.png)
+
 ## Getting Started
 
 First you'll have to install Ruby into your computer. Then you'll need to download project into your computer and open up the terminal in project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser.
