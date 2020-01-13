@@ -1,4 +1,4 @@
-<div class="search-results">
+<div class="search-results<%= @search_results %>">
     <% @books.each do |book_index, attributes| %>
         <div class="book">
             <a target="_blank" rel="noopener noreferrer" class="book-image" href="<%= attributes[4] %>">
@@ -6,6 +6,7 @@
             </a>
             <div class="book-info">
                 <a target="_blank" rel="noopener noreferrer" class="book-title" href="<%= attributes[4] %>"><%= attributes[0] %></a>
+                <div class="separator"></div>
                 <div class="price-wrapper">
                     <div class="book-price"><%= attributes[2] %></div>
                     <div class="book-format"><%= attributes[1] %></div>

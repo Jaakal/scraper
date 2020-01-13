@@ -38,6 +38,8 @@ class BookDepositoryScraper
 
       book_title = book.css('.title a').text.strip!
 
+      break if book_title.nil?
+
       if strict_search
         next unless book_title.downcase == @book_title_to_search.downcase
       else

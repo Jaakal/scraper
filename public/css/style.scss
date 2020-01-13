@@ -131,12 +131,12 @@ form {
 
 .submit-button {
   position: absolute;
+  right: 0;
   height: 12px;
   width: 12px;
   padding: 0;
   border-radius: 6px;
-  border-color: red;
-  right: 0;
+  border: 1px solid red;
   opacity: 0;
   transform: translateX(50px);
   background-color: inherit;
@@ -264,6 +264,11 @@ form {
       &:hover {
         color: #61635d;
       }
+    }
+
+    .separator {
+      margin: 5px 0;
+      border-top: 1px solid #010203;
     }
 
     .book-format {
