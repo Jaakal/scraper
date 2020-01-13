@@ -4,7 +4,7 @@ This is a scraper for books from [Book Depository](https://www.bookdepository.co
 
 ## Screenshot
 
-![Screenshot of the webpage](https://github.com/Jaakal/scraper/blob/layout/screenshot.png)
+![Screenshot of the webpage](https://github.com/Jaakal/scraper/blob/set_up_scraper/screenshot.png)
 
 ## Getting Started
 
