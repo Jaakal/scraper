@@ -8,11 +8,11 @@ This is a scraper for books from [Book Depository](https://www.bookdepository.co
 
 ## Getting Started
 
-First you'll have to install Ruby into your computer. Then you'll need to download project into your computer and open up the terminal in project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser.
+First you'll have to install Ruby into your computer. Then you'll need to download project into your computer and open up the terminal in project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser as is visible from the screenshot.
 
-### Rspec tests
+## Rspec tests
 
-There's six tests over all, which test that the connection with Book Depository webpage is set up and all the functions work in order to get desired search results or no error is thrown if for the result is no books at all.
+There's six tests over all, which test that the connection with Book Depository webpage is set up and all the functions work in order to get the desired search results or no error is thrown if for the result is no books at all.
 
 ## Deployment
 
