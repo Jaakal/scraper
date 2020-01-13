@@ -2,6 +2,8 @@
 
 require_relative 'models/book_depository_scraper.rb'
 
+set :root, File.dirname(__FILE__)
+
 class AsyncTest < Sinatra::Base
   register Sinatra::Async
 
