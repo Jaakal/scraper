@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "League Script";
+  font-family: 'League Script';
   src: url("../fonts/leaguescript-regular-webfont.eot");
   src: url("../fonts/eaguescript-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/leaguescript-regular-webfont.woff2") format("woff2"), url("../fonts/leaguescript-regular-webfont.woff") format("woff"), url("../fonts/leaguescript-regular-webfont.ttf") format("truetype"), url("../fonts/leaguescript-regular-webfont.svg#league_scriptleague_script") format("svg");
   font-weight: normal;
@@ -7,13 +7,14 @@
 }
 
 @font-face {
-  font-family: "Nothing You Could Do";
+  font-family: 'Nothing You Could Do';
   src: url("../fonts/nothingyoucoulddo-regular-webfont.eot");
   src: url("../fonts/nothingyoucoulddo-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/nothingyoucoulddo-regular-webfont.woff2") format("woff2"), url("../fonts/nothingyoucoulddo-regular-webfont.woff") format("woff"), url("../fonts/nothingyoucoulddo-regular-webfont.ttf") format("truetype"), url("../fonts/nothingyoucoulddo-regular-webfont.svg#nothing_you_could_doregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
+/* header */
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,13 +23,16 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 100px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
-.logo {
+.main-logo {
   display: inline-block;
   margin: 30px auto;
   font-family: "League Script";
-  font-size: 100px;
+  font-size: 60px;
   text-align: center;
 }
 
@@ -36,15 +40,41 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 10px;
+  -webkit-perspective: 5000px;
+          perspective: 5000px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  will-change: transform;
+  -webkit-transition: -webkit-transform 2s linear;
+  transition: -webkit-transform 2s linear;
+  transition: transform 2s linear;
+  transition: transform 2s linear, -webkit-transform 2s linear;
 }
 
-.search form {
+.space-filler-1,
+.space-filler-2 {
+  background: transparent;
+}
+
+.book-depository-logo {
+  width: 154px;
+  margin-bottom: 20px;
+  fill: black;
+}
+
+.book-depository-logo-book {
+  fill: #00bdd7;
+}
+
+form {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -67,9 +97,16 @@ header {
           animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-transition: width 0.6s ease, -webkit-box-shadow 0.6s ease;
+  transition: width 0.6s ease, -webkit-box-shadow 0.6s ease;
+  transition: width 0.6s ease, box-shadow 0.6s ease;
+  transition: width 0.6s ease, box-shadow 0.6s ease, -webkit-box-shadow 0.6s ease;
+  will-change: width, box-shadow, transform;
 }
 
-.search form::before {
+form::before {
   content: "";
   position: absolute;
   width: 15px;
@@ -81,76 +118,11 @@ header {
           transform: rotate(45deg);
   -webkit-transform-origin: center left;
           transform-origin: center left;
-  will-change: width, opacity;
-  -webkit-transition: opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
-  transition: opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
-  transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s;
-  transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s, -webkit-transform 0.3s ease 0.2s;
-}
-
-.search-input-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  height: 52px;
-  width: 748px;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-}
-
-.search-input-wrapper.active form {
-  -webkit-box-shadow: 0 0 3px #2A93D5;
-          box-shadow: 0 0 3px #2A93D5;
-  -webkit-transition: -webkit-box-shadow 0.3s ease 0.3s;
-  transition: -webkit-box-shadow 0.3s ease 0.3s;
-  transition: box-shadow 0.3s ease 0.3s;
-  transition: box-shadow 0.3s ease 0.3s, -webkit-box-shadow 0.3s ease 0.3s;
-}
-
-.search-input-wrapper.active form::before {
-  opacity: 0;
-  -webkit-transform: rotate(45deg) scaleX(0);
-          transform: rotate(45deg) scaleX(0);
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
-}
-
-.search-input-wrapper.active .search-input {
-  padding: 0 28px 0 10px;
-  -webkit-transition: padding 0s linear 0.6s;
-  transition: padding 0s linear 0.6s;
-}
-
-.search-input-wrapper.active .space-filler-1 {
-  width: 0;
-  -webkit-transition: width 0.3s ease 0.2s;
-  transition: width 0.3s ease 0.2s;
-}
-
-.search-input-wrapper.active .space-filler-2 {
-  width: 195px;
-  -webkit-transition: width 0.3s ease 0.2s;
-  transition: width 0.3s ease 0.2s;
-}
-
-.search-input-wrapper.active .submit-button {
-  opacity: 1;
-  -webkit-transform: translate(-10px, -2px);
-          transform: translate(-10px, -2px);
-  -webkit-transition: opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
-  transition: opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
-  transition: transform ease 0.5s, opacity 0.3s ease 0.6s;
-  transition: transform ease 0.5s, opacity 0.3s ease 0.6s, -webkit-transform ease 0.5s;
-}
-
-.search-input-wrapper.active .submit-button:hover {
-  cursor: pointer;
+  -webkit-transition: opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
+  transition: opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
+  transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s;
+  transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
+  will-change: transform, width, opacity;
 }
 
 .form-inner-wrapper {
@@ -163,6 +135,7 @@ header {
   position: relative;
   width: 100%;
   border-radius: 13px;
+  background-color: transparent;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-animation-name: rotate-anticlockwise;
@@ -171,25 +144,9 @@ header {
           animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  background-color: transparent;
-}
-
-.space-filler-1,
-.space-filler-2 {
-  width: 269px;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
   will-change: transform;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-}
-
-.book-depository-logo {
-  width: 154px;
-  margin-right: 30px;
-  fill: black;
-}
-
-.book-depository-logo-book {
-  fill: #00bdd7;
 }
 
 .search-input {
@@ -199,9 +156,10 @@ header {
   line-height: 16px;
   border: none;
   border-radius: 13px;
-  color: #2A93D5;
-  will-change: padding;
   background: transparent;
+  caret-color: transparent;
+  color: #2A93D5;
+  will-change: padding, caret-color;
 }
 
 .search-input:focus {
@@ -220,6 +178,7 @@ header {
   -webkit-transform: translateX(50px);
           transform: translateX(50px);
   background-color: inherit;
+  will-change: transform, opacity;
 }
 
 .submit-button span {
@@ -244,50 +203,234 @@ header {
   outline: none;
 }
 
+.animation-on {
+  -webkit-transform: rotateY(45deg);
+          transform: rotateY(45deg);
+}
+
+.animation-on form,
+.animation-on .form-inner-wrapper {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.search.active form {
+  width: 95%;
+  -webkit-box-shadow: 0 0 3px #2A93D5;
+          box-shadow: 0 0 3px #2A93D5;
+}
+
+.search.active form::before {
+  opacity: 0;
+  -webkit-transform: rotate(45deg) scaleX(0);
+          transform: rotate(45deg) scaleX(0);
+  -webkit-transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease, -webkit-transform 0.6s ease;
+}
+
+.search.active .search-input {
+  padding: 0 28px 0 10px;
+  caret-color: currentColor;
+  -webkit-transition: padding 0s linear 0.8s, caret-color 0s linear 0.8s;
+  transition: padding 0s linear 0.8s, caret-color 0s linear 0.8s;
+}
+
+.search.active .submit-button {
+  opacity: 1;
+  -webkit-transform: translate(-10px, -2px);
+          transform: translate(-10px, -2px);
+  -webkit-transition: opacity 0.3s ease 0.8s, -webkit-transform ease 0.7s;
+  transition: opacity 0.3s ease 0.8s, -webkit-transform ease 0.7s;
+  transition: transform ease 0.7s, opacity 0.3s ease 0.8s;
+  transition: transform ease 0.7s, opacity 0.3s ease 0.8s, -webkit-transform ease 0.7s;
+}
+
+.search.active .submit-button:hover {
+  cursor: pointer;
+}
+
+/* instructions */
+.instructions {
+  max-width: 940px;
+  width: 90%;
+  margin: 0 auto 30px auto;
+  font-family: 'Nothing You Could Do';
+  font-size: 24px;
+  line-height: 30px;
+  text-align: justify;
+}
+
+.end-note {
+  padding-left: 20px;
+}
+
+/* search results */
 .search-results {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 1380px;
+  width: 95%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border: 1px solid red;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 5px red;
+          box-shadow: 0 0 5px red;
 }
 
 .search-results .book {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin-bottom: 20px;
 }
 
-@-webkit-keyframes rotate-clockwise {
-  0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+.search-results .book .book-image img {
+  height: 140px;
+  -webkit-box-shadow: 0 0 2px #000000;
+          box-shadow: 0 0 2px #000000;
+}
+
+.search-results .book .book-info {
+  width: calc(100% - 130px);
+  padding: 0 10px;
+}
+
+.search-results .book .book-title {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 25px;
+  text-decoration: none;
+  color: #010203;
+}
+
+.search-results .book .book-title:hover {
+  color: #61635d;
+}
+
+.search-results .book .book-format {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.search-results .book .book-price {
+  font-size: 20px;
+  margin-left: 10px;
+  color: #ff0000;
+}
+
+.search-results .book .price-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* utility classes */
+.display-none {
+  display: none;
+}
+
+@media screen and (min-width: 576px) {
+  /* header */
+  .main-logo {
+    font-size: 100px;
   }
-  100% {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
+  .search {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .space-filler-1,
+  .space-filler-2 {
+    -ms-flex-preferred-size: calc(50% - 107px);
+        flex-basis: calc(50% - 107px);
+    -webkit-transition: -webkit-flex-basis 0.6s ease;
+    transition: -webkit-flex-basis 0.6s ease;
+    transition: flex-basis 0.6s ease;
+    transition: flex-basis 0.6s ease, -webkit-flex-basis 0.6s ease, -ms-flex-preferred-size 0.6s ease;
+    will-change: flex-basis;
+  }
+  .space-filler-2 {
+    -ms-flex-negative: 1000;
+        flex-shrink: 1000;
+  }
+  .book-depository-logo {
+    margin: 0 30px 0 0;
+  }
+  .search.active .space-filler-1 {
+    -ms-flex-preferred-size: calc(50% - 368.5px);
+        flex-basis: calc(50% - 368.5px);
+    -webkit-transition: -webkit-flex-basis 0.6s ease 0.2s;
+    transition: -webkit-flex-basis 0.6s ease 0.2s;
+    transition: flex-basis 0.6s ease 0.2s;
+    transition: flex-basis 0.6s ease 0.2s, -webkit-flex-basis 0.6s ease 0.2s, -ms-flex-preferred-size 0.6s ease 0.2s;
+  }
+  .search.active .space-filler-2 {
+    -ms-flex-preferred-size: calc(50% - 174.5px);
+        flex-basis: calc(50% - 174.5px);
+    -webkit-transition: -webkit-flex-basis 0.6s ease 0.2s;
+    transition: -webkit-flex-basis 0.6s ease 0.2s;
+    transition: flex-basis 0.6s ease 0.2s;
+    transition: flex-basis 0.6s ease 0.2s, -webkit-flex-basis 0.6s ease 0.2s, -ms-flex-preferred-size 0.6s ease 0.2s;
+  }
+  .search.active form {
+    width: 30px;
   }
 }
 
+@media screen and (min-width: 768px) {
+  /* search results */
+  .search-results {
+    padding: 15px;
+    border-radius: 15px;
+  }
+  .search-results .book {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+  /* instructions */
+  .end-note {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  /* search results */
+  .search-results {
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+
+/* search input form animations */
+/*
 @keyframes rotate-clockwise {
   0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
   100% {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
-
+*/
 @-webkit-keyframes rotate-anticlockwise {
   0% {
     -webkit-transform: rotateY(0deg);
@@ -298,7 +441,6 @@ header {
             transform: rotateY(-360deg);
   }
 }
-
 @keyframes rotate-anticlockwise {
   0% {
     -webkit-transform: rotateY(0deg);
