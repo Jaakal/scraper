@@ -33,4 +33,4 @@ class AsyncTest < Sinatra::Base
   end
 end
 
-# AsyncTest.run!
+AsyncTest.run!

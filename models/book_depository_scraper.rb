@@ -19,7 +19,7 @@ class BookDepositoryScraper
   def search_book_depository
     unless @book_depository_page
       new_session
-      visit @book_name
+      search @book_name
       @book_depository_page = Nokogiri::HTML.parse(html)
     end
     @book_depository_page
@@ -30,8 +30,8 @@ class BookDepositoryScraper
     index = 0
 
     @book_title_to_search = @book_name
-    strict_search = book_title_to_search.include?('"') ? true : false
-    book_title_to_search.tr!('"', '')
+    strict_search = @book_title_to_search.include?('"') ? true : false
+    @book_title_to_search = @book_title_to_search.tr('"', '')
 
     @book_depository_page.css('.book-item').each do |book|
       next unless book.css('.unavailable').empty?

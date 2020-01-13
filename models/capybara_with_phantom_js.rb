@@ -29,7 +29,7 @@ module CapybaraWithPhantomJs
     @session.visit('https://www.bookdepository.com/')
   end
 
-  def visit(book_name)
+  def search(book_name)
     input = @session.fill_in('searchTerm', with: book_name)
     input.send_keys :enter
 

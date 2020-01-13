@@ -1,60 +1,18 @@
 # Scraper
 
-This is a scraper to track prices for books from [Amazon](https://www.amazon.com/) and [Book Depository](https://www.bookdepository.com/) in order to get the notice in the email, if the price has reached in the expected price range.
+This is a scraper for books from [Book Depository](https://www.bookdepository.com/) in order to get the results which are currently available and on the next stage would like to add a price following functionality - if desired price range is met, a notice is sent through email.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+First you'll have to install Ruby into your computer. Then you'll need to download project into your computer and open up the terminal in project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser.
 
-### Prerequisites
+### Rspec tests
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+There's six tests over all, which test that the connection with Book Depository webpage is set up and all the functions work in order to get desired search results or no error is thrown if for the result is no books at all.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Work in progress to get it set up in Heroku!
 
 ## Built With
 
