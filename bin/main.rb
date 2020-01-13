@@ -49,9 +49,11 @@ class BookDepositoryScraper
       book_price = book.css('.price').text.split(' ')
       book_format = book.css('.format').text.strip!
       book_image_url = book.css('img')[0]['data-lazy']
-      book_link = 'https://www.bookdepository.com/' + book.css('.title a')[0]['href']
+      book_link = 'https://www.bookdepository.com/'\
+                  + book.css('.title a')[0]['href']
 
-      book_info = [book_title, book_format, book_price[0] + book_price[1], book_image_url, book_link]
+      book_info = [book_title, book_format, book_price[0] + book_price[1],
+                   book_image_url, book_link]
       @books[index] = book_info
 
       index += 1

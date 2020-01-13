@@ -32,9 +32,10 @@ module CapybaraWithPhantomJs
   def visit(book_name)
     input = @session.fill_in('searchTerm', with: book_name)
     input.send_keys :enter
- 
+
     sleep 0.1 until @session.html.include?('search-page') ||
-                    @session.html.include?('Please enter something into the fields below to start a search.')
+                    @session.html.include?('Please enter something into the '\
+                      'fields below to start a search.')
   end
 
   # Returns the current session's page

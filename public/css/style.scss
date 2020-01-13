@@ -74,13 +74,8 @@ form {
   height: 30px;
   border: 2px solid #00bdd7;
   border-radius: 15px;
-  transform-style: preserve-3d;
-  animation-name: rotate-clockwise;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
+  will-change: width, box-shadow;
   transition: width 0.6s ease, box-shadow 0.6s ease;
-  will-change: width, box-shadow, transform;
 
   &::before {
     content: "";
@@ -92,8 +87,8 @@ form {
     bottom: 3px;
     transform: rotate(45deg);
     transform-origin: center left;
-    transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s;
     will-change: transform, width, opacity;
+    transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s;
   }
 }
 
@@ -367,17 +362,7 @@ form {
   }
 }
 
-/* search input form animations */
-/*
-@keyframes rotate-clockwise {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-*/
+/* search input form animation */
 
 @keyframes rotate-anticlockwise {
   0% {

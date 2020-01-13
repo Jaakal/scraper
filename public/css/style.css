@@ -89,21 +89,11 @@ form {
   height: 30px;
   border: 2px solid #00bdd7;
   border-radius: 15px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-animation-name: rotate-clockwise;
-          animation-name: rotate-clockwise;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  will-change: width, box-shadow;
   -webkit-transition: width 0.6s ease, -webkit-box-shadow 0.6s ease;
   transition: width 0.6s ease, -webkit-box-shadow 0.6s ease;
   transition: width 0.6s ease, box-shadow 0.6s ease;
   transition: width 0.6s ease, box-shadow 0.6s ease, -webkit-box-shadow 0.6s ease;
-  will-change: width, box-shadow, transform;
 }
 
 form::before {
@@ -118,11 +108,11 @@ form::before {
           transform: rotate(45deg);
   -webkit-transform-origin: center left;
           transform-origin: center left;
+  will-change: transform, width, opacity;
   -webkit-transition: opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
   transition: opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
   transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s;
   transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s, -webkit-transform 0.6s ease 0.4s;
-  will-change: transform, width, opacity;
 }
 
 .form-inner-wrapper {
@@ -425,17 +415,7 @@ form::before {
   }
 }
 
-/* search input form animations */
-/*
-@keyframes rotate-clockwise {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-*/
+/* search input form animation */
 @-webkit-keyframes rotate-anticlockwise {
   0% {
     -webkit-transform: rotateY(0deg);

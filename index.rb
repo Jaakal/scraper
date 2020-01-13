@@ -24,7 +24,7 @@ class AsyncTest < Sinatra::Base
         @input = scraper.book_title_to_search
         @active = @input.length.positive? ? ' active animation-on' : ''
         @books = scraper.books
-        @search_results = @books.empty? ? ' display-none' : '' 
+        @search_results = @books.empty? ? ' display-none' : ''
         erb :search_results
       end
     end
