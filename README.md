@@ -4,11 +4,11 @@ This is a scraper for books from [Book Depository](https://www.bookdepository.co
 
 ## Screenshot
 
-![Screenshot of the webpage](https://github.com/Jaakal/scraper/blob/set_up_scraper/screenshot.png)
+![Screenshot of the webpage](https://github.com/Jaakal/scraper/blob/set_up_scraper/screenshot.gif)
 
 ## Getting Started
 
-First you'll have to install Ruby into your computer. Then you'll need to download project into your computer and open up the terminal in project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser as is visible from the screenshot.
+First you'll have to install Ruby into your computer. Then you'll need to download the project into your computer and open up the terminal in the project root directory. Then you'll have to run bundle install and have a little luck with all the gems installing without problems. Then you'll have to run the command "ruby application_controller.rb" and open up browser on "localhost:4567". Instructions, how to use the scraper, is provided through GUI in browser or you can see from the GIF screenshot.
 
 ## Rspec tests
 
