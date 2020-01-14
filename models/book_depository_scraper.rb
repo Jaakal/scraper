@@ -47,8 +47,7 @@ class BookDepositoryScraper
       end
 
       book_price = book.css('.price').text.strip
-      book_price = book_price.gsub(/#{book.css('.price .rrp').text.strip}/, '')
-      book_price = book_price.tr("\n ", '')
+      book_price = book_price[0...book_price.index("\n")]
 
       book_format = book.css('.format').text.strip!
       book_image_url = book.css('img')[0]['data-lazy']
