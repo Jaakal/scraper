@@ -45,14 +45,17 @@ class BookDepositoryScraper
       else
         next unless book_title.downcase.include?(@book_title_to_search.downcase)
       end
-
-      book_price = book.css('.price').text.split(' ')
+      
+      book_price = book.css('.price').text.strip
+      book_price = book_price.gsub(/#{book.css('.price .rrp').text.strip}/, '')
+      book_price = book_price.tr("\n ", '')
+      
       book_format = book.css('.format').text.strip!
       book_image_url = book.css('img')[0]['data-lazy']
       book_link = 'https://www.bookdepository.com/'\
                   + book.css('.title a')[0]['href']
 
-      book_info = [book_title, book_format, book_price[0] + book_price[1],
+      book_info = [book_title, book_format, book_price,
                    book_image_url, book_link]
       @books[index] = book_info
 
