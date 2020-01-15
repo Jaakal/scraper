@@ -1,5 +1,5 @@
 <div class="search-results<%= @search_results %>">
-    <% @books.each do |book_index, attributes| %>
+    <% @books.each do |attributes| %>
         <div class="book">
             <a target="_blank" rel="noopener noreferrer" class="book-image" href="<%= attributes[4] %>">
                 <img src="<%= attributes[3] %>" alt="<%= attributes[0] %>">

@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require 'sinatra'
+require 'sinatra/async'
 require_relative 'models/book_depository_scraper.rb'
 
 set :root, File.dirname(__FILE__)
+set :server, 'thin'
 
 class AsyncTest < Sinatra::Base
   register Sinatra::Async
@@ -19,11 +22,9 @@ class AsyncTest < Sinatra::Base
   apost '/' do
     EM.next_tick do
       scraper = BookDepositoryScraper.new(params['book-title'])
-      scraper.search_book_depository
-      scraper.parse_the_results
 
       body do
-        @input = scraper.book_title_to_search
+        @input = params['book-title']
         @active = @input.length.positive? ? ' active animation-on' : ''
         @books = scraper.books
         @search_results = @books.empty? ? ' display-none' : ''
@@ -33,4 +34,4 @@ class AsyncTest < Sinatra::Base
   end
 end
 
-AsyncTest.run!
+# AsyncTest.run!

@@ -1,39 +1,35 @@
-#! /usr/bin/env ruby
 # frozen_string_literal: true
 
 require 'nokogiri'
-require 'sinatra'
-require 'sinatra/async'
-require_relative 'capybara_with_phantom_js'
-
-set :server, 'thin'
+require 'open-uri'
 
 class BookDepositoryScraper
-  include CapybaraWithPhantomJs
-  attr_reader :books, :book_title_to_search
+  attr_reader :books
 
   def initialize(book_name)
     @book_name = book_name
+    open_session
+    parse_results
   end
 
-  def search_book_depository
-    unless @book_depository_page
-      new_session
-      search @book_name
-      @book_depository_page = Nokogiri::HTML.parse(html)
-    end
-    @book_depository_page
+  private
+
+  def open_session
+    search_link = "https://www.bookdepository.com/search?searchTerm="
+    search_link += @book_name.strip.tr(' ', '+') 
+    search_link += "&search=Find+book"
+
+    @book_depository_search_result = Nokogiri::HTML(open(search_link))
   end
 
-  def parse_the_results
-    @books = {}
-    index = 0
+  def parse_results
+    @books = []
 
-    @book_title_to_search = @book_name
-    strict_search = @book_title_to_search.include?('"') ? true : false
-    @book_title_to_search = @book_title_to_search.tr('"', '')
+    strict_search = @book_name.include?('"') ? true : false
+    @book_name = @book_name.tr('"', '')
+    @book_name.downcase!
 
-    @book_depository_page.css('.book-item').each do |book|
+    @book_depository_search_result.css('.book-item').each do |book|
       next unless book.css('.unavailable').empty?
 
       book_title = book.css('.title a').text.strip!
@@ -41,24 +37,21 @@ class BookDepositoryScraper
       break if book_title.nil?
 
       if strict_search
-        next unless book_title.downcase == @book_title_to_search.downcase
+        next unless book_title.downcase == @book_name
       else
-        next unless book_title.downcase.include?(@book_title_to_search.downcase)
+        next unless book_title.downcase.include?(@book_name)
       end
 
       book_price = book.css('.price').text.strip
       book_price = book_price[0...book_price.index("\n")]
 
-      book_format = book.css('.format').text.strip!
+      book_format = book.css('.format').text.strip
       book_image_url = book.css('img')[0]['data-lazy']
       book_link = 'https://www.bookdepository.com/'\
                   + book.css('.title a')[0]['href']
 
-      book_info = [book_title, book_format, book_price,
-                   book_image_url, book_link]
-      @books[index] = book_info
-
-      index += 1
+      @books.push([book_title, book_format, book_price,
+                   book_image_url, book_link])
     end
   end
 end
