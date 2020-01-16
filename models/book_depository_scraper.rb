@@ -15,11 +15,11 @@ class BookDepositoryScraper
   private
 
   def open_session
-    search_link = "https://www.bookdepository.com/search?searchTerm="
-    search_link += @book_name.strip.tr(' ', '+') 
-    search_link += "&search=Find+book"
+    search_link = 'https://www.bookdepository.com/search?searchTerm='
+    search_link += @book_name.strip.tr(' ', '+')
+    search_link += '&search=Find+book'
 
-    @book_depository_search_result = Nokogiri::HTML(open(search_link))
+    @book_depository_search_result = Nokogiri::HTML(URI.open(search_link))
   end
 
   def parse_results

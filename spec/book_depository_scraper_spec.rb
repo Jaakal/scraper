@@ -29,4 +29,3 @@ describe BookDepositoryScraper do
     end
   end
 end
-
