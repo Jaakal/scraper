@@ -3,6 +3,6 @@
 $LOAD_PATH.unshift File.expand_path(__dir__)
 require 'rubygems'
 require 'sinatra'
-require './application_controller'
+require 'application_controller.rb'
 
-AsyncTest.run!
+# ApplicationController.run!

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../models/book_depository_scraper.rb'
-=begin
+
 describe BookDepositoryScraper do
   describe '#initialize' do
     it 'should not return any error' do
@@ -29,4 +29,4 @@ describe BookDepositoryScraper do
     end
   end
 end
-=end
+

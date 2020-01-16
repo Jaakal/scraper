@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/async'
 require_relative 'models/book_depository_scraper.rb'
 
-set :root, File.dirname(__FILE__)
+# set :root, File.dirname(__FILE__)
 set :server, 'thin'
 
-class AsyncTest < Sinatra::Base
+class ApplicationController < Sinatra::Base
   register Sinatra::Async
 
   aget '/' do
@@ -34,4 +35,4 @@ class AsyncTest < Sinatra::Base
   end
 end
 
-# AsyncTest.run!
+ApplicationController.run!
