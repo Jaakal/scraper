@@ -1,0 +1,378 @@
+@font-face {
+  font-family: 'League Script';
+  src: url("../fonts/leaguescript-regular-webfont.eot");
+  src: url("../fonts/eaguescript-regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/leaguescript-regular-webfont.woff2") format("woff2"),
+    url("../fonts/leaguescript-regular-webfont.woff") format("woff"),
+    url("../fonts/leaguescript-regular-webfont.ttf") format("truetype"),
+    url("../fonts/leaguescript-regular-webfont.svg#league_scriptleague_script") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nothing You Could Do';
+  src: url("../fonts/nothingyoucoulddo-regular-webfont.eot");
+  src: url("../fonts/nothingyoucoulddo-regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/nothingyoucoulddo-regular-webfont.woff2") format("woff2"),
+    url("../fonts/nothingyoucoulddo-regular-webfont.woff") format("woff"),
+    url("../fonts/nothingyoucoulddo-regular-webfont.ttf") format("truetype"),
+    url("../fonts/nothingyoucoulddo-regular-webfont.svg#nothing_you_could_doregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  perspective: 1000px;
+}
+
+.main-logo {
+  display: inline-block;
+  margin: 30px auto;
+  font-family: "League Script";
+  font-size: 60px;
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+  perspective: 5000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 2s linear;
+}
+
+.space-filler-1,
+.space-filler-2 {
+  background: transparent;
+}
+
+.book-depository-logo {
+  width: 154px;
+  margin-bottom: 20px;
+  fill: black;
+}
+
+.book-depository-logo-book {
+  fill: #00bdd7;
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00bdd7;
+  border-radius: 15px;
+  will-change: width, box-shadow;
+  transition: width 0.6s ease, box-shadow 0.6s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    opacity: 1;
+    border: 1px solid #00bdd7;
+    right: -11px;
+    bottom: 3px;
+    transform: rotate(45deg);
+    transform-origin: center left;
+    will-change: transform, width, opacity;
+    transition: transform 0.6s ease 0.4s, opacity 0.6s ease 0.4s;
+  }
+}
+
+.form-inner-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-radius: 13px;
+  background-color: transparent;
+  transform-style: preserve-3d;
+  animation-name: rotate-anticlockwise;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+.search-input {
+  height: calc(100% - 4px);
+  width: 100%;
+  font-size: 16px;
+  line-height: 16px;
+  border: none;
+  border-radius: 13px;
+  background: transparent;
+  caret-color: transparent;
+  color: #2A93D5;
+  will-change: padding, caret-color;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.submit-button {
+  position: absolute;
+  right: 0;
+  height: 12px;
+  width: 12px;
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid red;
+  opacity: 0;
+  transform: translateX(50px);
+  background-color: inherit;
+  will-change: transform, opacity;
+
+  span {
+    position: absolute;
+    width: 8px;
+    border-top: 1px solid red;
+    transform: translate(2px, 6px) rotate(45deg);
+  }
+
+  &:hover {
+    box-shadow: 0 0 2px red,
+                0 0 1px red inset;
+
+    span {
+      box-shadow: 0 0 2px red;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+// header animations
+
+.animation-on {
+  transform: rotateY(45deg);
+}
+
+.animation-on form,
+.animation-on .form-inner-wrapper {
+  animation-play-state: running;
+}
+
+.search.active {
+  form {
+    width: 95%;
+    box-shadow: 0 0 3px #2A93D5;
+  
+    &::before {
+      opacity: 0;
+      transform: rotate(45deg) scaleX(0);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+  }
+
+  .search-input {
+    padding: 0 28px 0 10px;
+    caret-color: currentColor;
+    transition: padding 0s linear 0.8s, caret-color 0s linear 0.8s;
+  }
+
+  .submit-button {
+    opacity: 1;
+    transform: translate(-10px, -2px);
+    transition: transform ease 0.7s, opacity 0.3s ease 0.8s;
+  
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+/* instructions */
+
+.instructions {
+  max-width: 940px;
+  width: 90%;
+  margin: 0 auto 30px auto;
+  font-family: 'Nothing You Could Do';
+  font-size: 24px;
+  line-height: 30px;
+  text-align: justify;
+}
+
+.colorize {
+  color: #cb2d2d;
+}
+
+.end-note {
+  padding-left: 20px;
+}
+
+/* search results */
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1380px;
+  width: 95%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border: 1px solid red;
+  border-radius: 10px;
+  box-shadow: 0 0 5px red;
+
+  .book {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .book-image {
+      img {
+        height: 140px;
+        box-shadow: 0 0 2px #000000;
+      }
+    }
+    
+    .book-info {
+      width: calc(100% - 130px);
+      padding: 0 10px;
+    }
+
+    .book-title {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 25px;
+      text-decoration: none;
+      color: #010203;
+
+      &:hover {
+        color: #61635d;
+      }
+    }
+
+    .separator {
+      margin: 5px 0;
+      border-top: 1px solid #010203;
+    }
+
+    .book-format {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    .book-price {
+      font-size: 20px;
+      margin-left: 10px;
+      color: #ff0000;
+    }
+
+    .price-wrapper {
+      display: flex;
+    }
+  }
+}
+
+/* utility classes */
+
+.display-none {
+  display: none;
+}
+
+@media screen and (min-width: 576px) {
+  /* header */
+  
+  .main-logo {
+    font-size: 100px;
+  }
+
+  .search {
+    flex-direction: row;
+  }
+
+  .space-filler-1,
+  .space-filler-2 {
+    flex-basis: calc(50% - 107px);
+    transition: flex-basis 0.6s ease;
+    will-change: flex-basis;
+  }
+  
+  .space-filler-2 {
+    flex-shrink: 1000;
+  }
+
+  .book-depository-logo {
+    margin: 0 30px 0 0;
+  }
+  
+  // header animations
+
+  .search.active {
+    .space-filler-1 {
+      flex-basis: calc(50% - 368.5px);
+      transition: flex-basis 0.6s ease 0.2s;
+    }
+
+    .space-filler-2 {
+      flex-basis: calc(50% - 174.5px);
+      transition: flex-basis 0.6s ease 0.2s;
+    }
+
+    form {
+      width: 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* search results */
+
+  .search-results {
+    padding: 15px;
+    border-radius: 15px;
+
+    .book {
+      flex-basis: 50%;
+    }
+  }
+
+  /* instructions */
+
+  .end-note {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  /* search results */
+  
+  .search-results {
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+
+/* search input form animation */
+
+@keyframes rotate-anticlockwise {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(-360deg);
+  }
+}

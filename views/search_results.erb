@@ -1,0 +1,17 @@
+<div class="search-results<%= @search_results %>">
+    <% @books.each do |attributes| %>
+        <div class="book">
+            <a target="_blank" rel="noopener noreferrer" class="book-image" href="<%= attributes[4] %>">
+                <img src="<%= attributes[3] %>" alt="<%= attributes[0] %>">
+            </a>
+            <div class="book-info">
+                <a target="_blank" rel="noopener noreferrer" class="book-title" href="<%= attributes[4] %>"><%= attributes[0] %></a>
+                <div class="separator"></div>
+                <div class="price-wrapper">
+                    <div class="book-price"><%= attributes[2] %></div>
+                    <div class="book-format"><%= attributes[1] %></div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
